@@ -21,6 +21,16 @@
             } 
 
         }
+
+        function VerifyEmail(){
+            var email =document.getElementById("txtEmail").value;
+            var emailError =document.getElementById("emailError");
+            if(email.endsWith("outlook.com")){
+                emailError.innerHTML ="<font color=green>Success</font>";
+            }else{
+                emailError.innerHTML ="<font color=red>Invalid Email - Only outlook acount allowed.</font>";
+            }
+        }
     </script>
 </head>
 <body class="container-fluid">
@@ -31,7 +41,9 @@
             <input placeholder="First time put this number 4444 or by defult 5555 nuber using." onkeyup="verifyCard()" id="txtCard" class="form-control" type="text">
             <img  class="input-group-text" id="pic" height="45px" width="100px">
         </dd>
+        <dt>Your outlook</dt>
+        <dd><input type="email" onblur="VerifyEmail()" placeholder="Your Name @outlook.com" id="txtEmail" class="form-control"></dd>
+        <dd id="emailError"></dd>
     </dl>
-    <img src="/images/citi.webp" alt="">
 </body>
 </html>
