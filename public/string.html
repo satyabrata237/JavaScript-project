@@ -26,9 +26,12 @@
             var email =document.getElementById("txtEmail").value;
             var emailError =document.getElementById("emailError");
             if(email.endsWith("outlook.com")){
-                emailError.innerHTML ="<font color=green>Success</font>";
+                emailError.innerHTML ="<font color=green>Success & Valid.</font>";
             }else{
                 emailError.innerHTML ="<font color=red>Invalid Email - Only outlook acount allowed.</font>";
+            }
+            if(email.indexOf("@")==-1){
+                emailError.innerHTML ="Inviled Email";
             }
         }
     </script>
