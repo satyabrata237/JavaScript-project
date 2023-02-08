@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script>
+        function bodyLoad(){
+            fetch("https://fakestoreapi.com/products")
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(products){
+                for(var item of products){
+                    var div = document.createElement("div");
+                    div.className = "card m-2 p-2";
+                    div.style.width = "200px";
+                    div.innerHTML =`
+                        <img src=${item.image} height="130" class="card-img-top">
+                        <div class="card-header text-center" style="height:180px">
+                           <p>${item.title}</p> 
+                        </div>
+                        <div class="card-body text-center">
+                            <dl>
+                                <dt>Price<dt>
+                                <hr>    
+                                <dd>&#8377; ${item.price}</dd> 
+                                <dt>Rating</dt>
+                                <hr>
+                                <dd>${item.rating.rate}[${item.rating.count}]</dd>   
+                            </dl>    
+                        </div>
+                    `;
+                    document.getElementById("cloth").appendChild(div);
+                }
+            })
+        }
+    </script>
+</head>
+<body onload="bodyLoad()" class="container-fluid">
+    <div class="d-flex flex-wrap" id="cloth">
+
+    </div>
+</body>
+</html>
