@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Iterations</title>
+    <script>
+        var data=[
+            {category:"Electronic","products":["television","Mobile"]},
+            {category:"footwear","products":["casual","Boots"]}
+    ];
+        function bodyLoad(){
+            for(var item of  data){
+                var ParentLi = document.createElement("li");
+                ParentLi.innerHTML = item.category;
+                var optgroup = document.createElement("optgroup");
+                optgroup.label = length.category;
+
+                for(var product of item.products){
+                    var Ul = document.createElement("ul");
+                    var UlLi = document.createElement("li");
+                    UlLi.innerHTML = product;
+                    Ul.appendChild(UlLi);
+                    ParentLi.appendChild(Ul);
+                    document.querySelector("ol").appendChild(ParentLi);
+                    var option = document.createElement("option");
+                    option.text =product;
+                    option.value =product;
+                    optgroup.appendChild(option);
+                    document.querySelector("select").appendChild(optgroup);
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="bodyLoad()" class="container-fluid">
+    <ol>
+
+    </ol>
+    <select>
+
+    </select>
+</body>
+</html>
