@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function LoginClock(){
+            var username = document.getElementById("UserName").value;
+            var password = document.getElementById("Password").value;
+
+            fetch("../data/users.json")
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(users){
+                for(var user of users){
+                    if(user.UserName===username && user.Password===password){
+                        document.write("<h3>Login Success..</h3");
+                            break;
+                    }else{
+                        document.getElementById("msg").innerHTML = "Invalid UserName/Password".fontcolor('red');
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <h3>User login</h3>
+        <dt>User Name</dt>
+        <dd><input type="text" id="UserName"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="Password"></dd>
+    </dl>
+    <button onclick="LoginClock()">Login</button>
+    <h2 align="center" id="msg"></h2>
+</body>
+</html>

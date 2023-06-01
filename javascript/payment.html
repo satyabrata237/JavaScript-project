@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forward Jump</title>
+    <script>
+        var Userdetails ={
+            CardNumber:"4444",
+            Expiry:"2024",
+            Cvv:"2340"
+        }
+        function VerifyCard(){
+            var card = document.getElementById("txtCard").value;
+            if(Userdetails.CardNumber===card){
+                document.getElementById("lstYear").disabled = false;
+                document.getElementById("txtCvv").disabled = false;
+                document.getElementById("txtPay").disabled = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>Payment Details</legend>
+        <dl>
+            <dt>Card number</dt>
+            <dd><input type="text" onkeyup="VerifyCard()" id="txtCard"></dd>
+            <dt>Expiry</dt>
+            <dd>
+                <select disabled id="lstYear">
+                    <option>2023</option>
+                    <option>2024</option>
+                </select>
+            </dd>
+            <dt>Cvv</dt>
+            <dd><input type="text" onkeyup="VerifyCard()" id="txtCvv" disabled size="4"></dd>
+        </dl>
+        <button disabled id="txtPay">Pay</button>
+    </fieldset>
+</body>
+</html>
